@@ -29,6 +29,8 @@ const App = () => {
           setNotification(`Information of ${name} has already been removed from server`)
           setNotificationType('error')
 
+          console.log(error)
+
           setTimeout(() => {
             setNotification(null)
           }, 3000);
@@ -129,23 +131,31 @@ const App = () => {
 }
 
   
-  return (
-    <div>
+    return (
+    <div className="app">
       <h2>Phonebook</h2>
       <Notification message={notification} type={notificationType}/>
-      <Filter value={filter} onChange={handleFilterChange} />
 
-      <h3>Add a new</h3>
-      <PersonForm
-        newName={newName}
-        newNumber={newNumber}
-        onNameChange={handleNameChange}
-        onNumberChange={handleNumberChange}
-        onSubmit={addPerson}
-      />
+      <div className="card">
+        <h3>Filter</h3>
+        <Filter value={filter} onChange={handleFilterChange} />
+      </div>
 
-      <h3>Numbers</h3>
-      <Persons persons={persons} filter={filter} onDelete={deletePerson} />
+      <div className="card">
+        <h3>Add a new</h3>
+        <PersonForm
+          newName={newName}
+          newNumber={newNumber}
+          onNameChange={handleNameChange}
+          onNumberChange={handleNumberChange}
+          onSubmit={addPerson}
+        />
+      </div>
+
+      <div className="card">
+        <h3>Numbers</h3>
+        <Persons persons={persons} filter={filter} onDelete={deletePerson} />
+      </div>
     </div>
   )
 }

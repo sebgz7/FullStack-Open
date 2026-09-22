@@ -4,12 +4,17 @@ const Persons = ({ persons, filter, onDelete }) => {
     : persons
 
   return (
-    <div>
+    <ul className="person-list">
       {personsFiltered.map(p =>
-        <p key={p.id}>{p.name} {p.number}
-        <button onClick={() => onDelete(p.id, p.name)}>delete</button></p>
+        <li className="person-row" key={p.id}>
+          <div className="person-info">
+            <span className="person-name">{p.name}</span>
+            <span className="person-number">{p.number}</span>
+          </div>
+          <button className="btn-delete" onClick={() => onDelete(p.id, p.name)}>Delete</button>
+        </li>
       )}
-    </div>
+    </ul>
   )
 }
 export default Persons
